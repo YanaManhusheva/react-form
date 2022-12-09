@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Form from "./components/Form";
+import { FormProvider } from "./context/FormContext";
+import { useTheme, useThemeUpdate } from "./context/ThemeContext";
 
 function App() {
+  const darkMode = useTheme();
+  const toggleTheme = useThemeUpdate();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className="toggle-btn" onClick={toggleTheme}>
+        Change Mode
+      </button>
+      <FormProvider>
+        <Form />
+      </FormProvider>
     </div>
   );
 }
